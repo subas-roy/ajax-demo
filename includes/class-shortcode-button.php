@@ -3,6 +3,8 @@ class Ajax_Demo_Shortcode_Button {
     function __construct() {
         add_shortcode('ajax_demo_button', [$this, 'render_button']);
         add_action('wp_ajax_demo', [$this, 'demo_call']); // for logged in user
+        add_action('wp_ajax_nopriv_demo', [$this, 'demo_call']); // for guest user
+        // add_action('wp_ajax_nopriv_demo', [$this, 'demo_guest_call']); // for guest user
     }
 
     function render_button() {
@@ -33,5 +35,8 @@ class Ajax_Demo_Shortcode_Button {
 
     function demo_call() {
         wp_send_json_success('Revieced ajax call');
+    }
+    function demo_guest_call() {
+        wp_send_json_success('Revieced ajax call from guest');
     }
 }
