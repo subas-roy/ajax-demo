@@ -8,10 +8,16 @@
 
 // Prevent direct access
 defined('ABSPATH') or exit();
+defined('AJDM_PLUGIN_URL', plugin_dir_url(__FILE__));
+defined('AJDM_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
 class Ajax_Demo{
     function _construct(){
-        
+        $this-> include_resources();
+    }
+
+    function include_resources() {
+        require_once(AJDM_PLUGIN_PATH . 'includes/class-shortcode-button.php');
     }
 }
 
