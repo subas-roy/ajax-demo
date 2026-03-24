@@ -2,6 +2,7 @@
 class Ajax_Demo_Shortcode_Button {
     function __construct() {
         add_shortcode('ajax_demo_button', [$this, 'render_button']);
+        add_action('wp_ajax_demo', [$this, 'demo_call']); // for logged in user
     }
 
     function render_button() {
@@ -28,5 +29,9 @@ class Ajax_Demo_Shortcode_Button {
         <div id="ajax-demo-result"></div>
 <?php
         return ob_get_clean();
+    }
+
+    function demo_call() {
+        wp_send_json_success('Revieced ajax call');
     }
 }
