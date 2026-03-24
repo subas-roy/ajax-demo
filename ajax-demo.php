@@ -1,10 +1,11 @@
 <?php
+
 /**
-* Plugin Name: Ajax Demo
-* Description: A simple plugin to demonstrate Ajax in WordPress with shortcode and dashboard widget.
-* Version: 1.0.o
-* Author: Subas Roy
-**/
+ * Plugin Name: Ajax Demo
+ * Description: A simple plugin to demonstrate Ajax in WordPress with shortcode and dashboard widget.
+ * Version: 1.0.o
+ * Author: Subas Roy
+ **/
 
 // Prevent direct access
 defined('ABSPATH') or exit();
@@ -12,10 +13,10 @@ defined('ABSPATH') or exit();
 define('AJDM_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('AJDM_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
-class Ajax_Demo{
-    function __construct(){
-        $this-> include_resources();
-        $this-> init();
+class Ajax_Demo {
+    function __construct() {
+        $this->include_resources();
+        $this->init();
         add_action('wp_enqueue_scripts', [$this, 'load_assets']);
     }
 
