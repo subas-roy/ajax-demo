@@ -30,6 +30,8 @@ class Ajax_Demo {
 
     function load_assets() {
         wp_enqueue_script('adjm-main', AJDM_PLUGIN_URL . 'assets/js/ajax-demo.js', [], time(), true);
+        $admin_ajax_url = admin_url('admin-ajax.php'); // ajax file url
+        wp_localize_script('adjm-main', 'ajdm', ['ajax_url' => $admin_ajax_url]); // send ajax url to JavaScript file
     }
 }
 

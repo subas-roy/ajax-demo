@@ -3,5 +3,6 @@ document.addEventListener('DOMContentLoaded', function () {
         .getElementById('ajax-demo-btn')
         .addEventListener('click', async function (event) {
             console.log('Button Clicked');
+            console.log(ajdm);
         });
 });
