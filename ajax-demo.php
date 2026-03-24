@@ -9,13 +9,14 @@
 // Prevent direct access
 defined('ABSPATH') or exit();
 
-defined('AJDM_PLUGIN_URL', plugin_dir_url(__FILE__));
-defined('AJDM_PLUGIN_PATH', plugin_dir_path(__FILE__));
+define('AJDM_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('AJDM_PLUGIN_PATH', plugin_dir_path(__FILE__));
 
 class Ajax_Demo{
-    function _construct(){
+    function __construct(){
         $this-> include_resources();
         $this-> init();
+        add_action('wp_enqueue_scripts', [$this, 'load_assets']);
     }
 
     function include_resources() {
@@ -24,6 +25,10 @@ class Ajax_Demo{
 
     function init() {
         new Ajax_Demo_Shortcode_Button();
+    }
+
+    function load_assets() {
+        wp_enqueue_script('adjm-main', AJDM_PLUGIN_URL . 'assets/js/ajax-demo.js', [], time(), true);
     }
 }
 
