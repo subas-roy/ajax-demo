@@ -18,14 +18,17 @@ class Ajax_Demo {
         $this->include_resources();
         $this->init();
         add_action('wp_enqueue_scripts', [$this, 'load_assets']);
+        add_action('admin_enqueue_scripts', [$this, 'load_assets']);
     }
 
     function include_resources() {
         require_once(AJDM_PLUGIN_PATH . 'includes/class-shortcode-button.php');
+        require_once(AJDM_PLUGIN_PATH . 'includes/class-currency-widget.php');
     }
 
     function init() {
         new Ajax_Demo_Shortcode_Button();
+        new Currency_Widget();
     }
 
     function load_assets() {
